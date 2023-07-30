@@ -1,13 +1,14 @@
-
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnboardingScreen from './screens/OnboardingScreen';
 import LoginScreen from './screens/LoginScreen';
-
 import { StyleSheet, Text, Image, View, Button } from 'react-native'
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import React, { useState, useEffect } from 'react'
+import RegisterScreen from './screens/RegisterScreen';
+import HomeScreen from './screens/HomeScreen';
+import ShopScreen from './screens/ShopScreen';
+import AnnouncementScreen from './screens/AnnouncementScreen';
 
 
 export default function App() {
@@ -34,11 +35,27 @@ export default function App() {
         }}>
         <Stack.Screen name="Onboarding" component={OnboardingScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Shop" component={ShopScreen} />
+        <Stack.Screen name="Announcements" component={AnnouncementScreen} />
       </Stack.Navigator>
     </NavigationContainer>
         )
     } else {
-        return <LoginScreen />
+        return (
+          <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Shop" component={ShopScreen} />
+        <Stack.Screen name="Announcements" component={AnnouncementScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+        )
     }
 }
 
