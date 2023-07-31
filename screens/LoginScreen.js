@@ -2,6 +2,7 @@ import { KeyboardAvoidingView, Image, SafeAreaView, StyleSheet, Text, TextInput,
 import React, { useState } from 'react'
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword } from "firebase/auth"
+import { AntDesign } from '@expo/vector-icons';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('')
@@ -23,13 +24,14 @@ const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Login</Text>
+      <Text style={styles.desc}>To continue to our app, please sign in using your credentials for our spiritual discovery program Epsilon.</Text>
       <View style={styles.inputContainer}>
-        <TextInput placeholderTextColor={'white'} placeholder="example@email.com"
+        <TextInput placeholderTextColor={'gray'} placeholder="example@email.com"
           value={email}
           onChangeText={text => setEmail(text)}
           style={styles.input}
         />
-        <TextInput type="email" placeholderTextColor={'white'} placeholder="yoursupersecretpassword"
+        <TextInput type="email" placeholderTextColor={'gray'} placeholder="yoursupersecretpassword"
           value={password}
           onChangeText={text => setPassword(text)}
           style={styles.input}
@@ -44,7 +46,7 @@ const LoginScreen = ({navigation}) => {
           onPress={handleSignIn}
           style={styles.button}
         >
-          <Text style={styles.button}>Login</Text>
+          <Text style={styles.button}>Login →</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -58,16 +60,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
+  },
+  desc: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    width: '90%',
+    paddingBottom: 5,
+    color: 'gray',
   },
   title: {
     fontSize: 50,
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
     paddingBottom: 20,
   },
   textLink: {
-    color: '#b8b8b8',
+    color: 'gray',
     paddingTop: 20,
     fontSize: 15,
     fontStyle: 'italic',
@@ -77,15 +87,15 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   input: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     paddingHorizontal: 15,
     paddingVertical: 15,
     borderRadius: 10,
     marginTop: 10,
     borderWidth: 1,
-    borderColor: '#FFBB99',
+    borderColor: 'black',
     borderRadius: 10,
-    color: 'white'
+    color: 'black'
   },
   buttonContainer: {
     width: '60%',
@@ -93,16 +103,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop:40,
     borderWidth: 1,
-    borderColor: '#FFBB99',
+    borderColor: 'black',
     borderRadius: 10,
   },
   button: {
-    backgroundColor: '#FFBB99',
+    backgroundColor: 'black',
     width: '100%',
     padding: 6,
     borderRadius: 10,
     textAlign: 'center',
-    color: 'black',
+    color: 'white',
+    fontSize: 14,
     fontWeight: 'bold',
   },
 })
